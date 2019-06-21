@@ -14,24 +14,47 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // 載入 mongoose
 const mongoose = require('mongoose')
 // 連接至指定資料庫
-mongoose.connect('mongoosedb://localhost/restaurants', {
+mongoose.connect('mongodb://localhost/restaurants', {
   useNewUrlParser: true
 })
 // 將資料庫回傳的文件儲存至變數
 const db = mongoose.connection
 
+// 與資料庫連線失敗訊息
 db.on('error', () => {
   console.log('db not connected')
 })
-
+// 與資料庫連線成功訊息
 db.once('open', () => {
   console.log('db connected')
 })
 
 // 設定路由
+
+// 顯示首頁
 app.get('/', (req, res) => {
   res.render('index')
 })
+
+// 一餐廳詳細頁面
+app.get('/restaurants/:id', (req, res) => {
+  // 詳細希望
+})
+
+// 新增一間餐廳頁面
+app.get('/restaurants/new', (req, res) => {})
+
+// 執行新增
+app.post('/restaurants', (req, res) => {})
+
+// 更新頁面
+app.get('/restaurants/:id/edit', (req, res) => {})
+
+// 執行更新
+app.post('/restaurants/:id', (req, res) => {})
+
+//刪除餐廳
+app.post('/restaurants/:id/delete', (req, res) => {})
 
 // 啟動並監聽
 app.listen(3000)
