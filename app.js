@@ -7,6 +7,9 @@ const exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
+// 告知 express 靜態檔案位置
+app.use(express.static('public'))
+
 // 載入 body-parser 解析 req.body
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -29,11 +32,18 @@ db.once('open', () => {
   console.log('db connected')
 })
 
+const Restaurant = require('./models/restaurant')
+
 // 設定路由
 
 // 顯示首頁
 app.get('/', (req, res) => {
-  res.render('index')
+  Restaurant.find({})
+    .sort({ _id: 1 })
+    .exec((err, restaurant) => {
+      if (err) return console.error(err)
+      return res.render('index', { restaurant })
+    })
 })
 
 // 一餐廳詳細頁面
