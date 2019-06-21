@@ -11,7 +11,22 @@ app.set('view engine', 'handlebars')
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// 載入 mongoose
 const mongoose = require('mongoose')
+// 連接至指定資料庫
+mongoose.connect('mongoosedb://localhost/restaurants', {
+  useNewUrlParser: true
+})
+// 將資料庫回傳的文件儲存至變數
+const db = mongoose.connection
+
+db.on('error', () => {
+  console.log('db not connected')
+})
+
+db.once('open', () => {
+  console.log('db connected')
+})
 
 // 設定路由
 app.get('/', (req, res) => {
