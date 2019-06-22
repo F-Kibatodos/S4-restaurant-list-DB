@@ -55,7 +55,8 @@
     </div>
     <a href="/"><button class="btn btn-dark" type="button">返回</button></a>
   </form>
-  <form action="/restaurants/{{restaurant.id}}/delete" method="POST" class="edit-delete">
+  <form action="/restaurants/{{restaurant.id}}/delete" method="POST" class="edit-delete"
+    onsubmit="return confirm('連修改都不要了，是否放棄治療')">
     <button type="submit" class="btn btn-danger">刪除</button>
   </form>
 </div>

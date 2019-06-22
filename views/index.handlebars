@@ -51,7 +51,7 @@
             </button>
           </a>
 
-          <form action="/restaurants/{{this.id}}/delete" method="POST">
+          <form action="/restaurants/{{this.id}}/delete" method="POST" onsubmit="return confirm('想清楚喔，要吃卻找不到了很痛苦喔')">
             <button type="submit" class="btn btn-danger px-2 py-1">
               刪除
             </button>
