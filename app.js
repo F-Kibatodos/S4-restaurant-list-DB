@@ -46,25 +46,75 @@ app.get('/', (req, res) => {
     })
 })
 
-// 一餐廳詳細頁面
-app.get('/restaurants/:id', (req, res) => {
-  // 詳細希望
+// 新增一間餐廳頁面
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
 })
 
-// 新增一間餐廳頁面
-app.get('/restaurants/new', (req, res) => {})
-
 // 執行新增
-app.post('/restaurants', (req, res) => {})
+app.post('/restaurants', (req, res) => {
+  const restaurant = Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description
+  })
+  restaurant.save(err => {
+    if (err) console.error(err)
+    res.redirect('/')
+  })
+})
+
+// 一餐廳詳細頁面
+app.get('/restaurants/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) console.error(err)
+    res.render('detail', { restaurant })
+  })
+})
 
 // 更新頁面
-app.get('/restaurants/:id/edit', (req, res) => {})
+app.get('/restaurants/:id/edit', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) console.error(err)
+    res.render('edit', { restaurant })
+  })
+})
 
 // 執行更新
-app.post('/restaurants/:id', (req, res) => {})
+app.post('/restaurants/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) console.error(err)
+    restaurant.name = req.body.name
+    restaurant.name_en = req.body.name_en
+    restaurant.category = req.body.category
+    restaurant.image = req.body.image
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.google_map = req.body.google_map
+    restaurant.rating = req.body.rating
+    restaurant.description = req.body.description
+    restaurant.save(err => {
+      if (err) console.error(err)
+      res.redirect(`/restaurants/${req.params.id}`)
+    })
+  })
+})
 
 //刪除餐廳
-app.post('/restaurants/:id/delete', (req, res) => {})
+app.post('/restaurants/:id/delete', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    restaurant.remove(err => {
+      if (err) console.error(err)
+      res.redirect('/')
+    })
+  })
+})
 
 // 啟動並監聽
 app.listen(3000)

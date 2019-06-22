@@ -62,7 +62,7 @@ button a:hover {
   color: white;
 }
 
-.form-control:focus {
+.search-form:focus {
   box-shadow: none;
   border-color: #ced4da;
 }
@@ -93,6 +93,11 @@ button a:hover {
   text-align: center;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.edit-buttons {
+  max-width: 600px;
+  margin: 20px auto;
 }
 
 @media screen and (max-width: 992px) {

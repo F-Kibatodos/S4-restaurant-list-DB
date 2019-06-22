@@ -1,0 +1,48 @@
+<div class="container my-2">
+  <form action="/restaurants" method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">名稱</label>
+        <input type="text" class="form-control" id="name" placeholder="餐廳名稱" name="name" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="name_en">英文名</label>
+        <input type="text" class="form-control" id="name_en" placeholder="餐廳英文名" name="name_en">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">電話</label>
+        <input type="text" class="form-control" id="phone" placeholder="餐廳電話" name="phone">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="category">類別</label>
+        <input type="text" class="form-control" id="category" placeholder="餐飲類別" name="category">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="location">地址</label>
+      <input type="text" class="form-control" id="location" placeholder="餐廳地址" name="location">
+    </div>
+    <div class="form-group">
+      <label for="image">圖片</label>
+      <input type="text" class="form-control" id="image" placeholder="圖片" name="image">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-11">
+        <label for="google_map">Google Map</label>
+        <input type="text" class="form-control" id="google_map" placeholder="google map 分享網址" name="google_map">
+      </div>
+      <div class="form-group col-md-1">
+        <label for="rating">評分</label>
+        <input type="number" class="form-control" id="rating" placeholder="1-5" name="rating" min="1" max="5"
+          step="0.1">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">描述</label>
+      <input type="text" class="form-control" id="description" placeholder="簡述餐廳特色" name="description">
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">新增</button>
+    </div>
+  </form>
+</div>

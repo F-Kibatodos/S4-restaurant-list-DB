@@ -4,8 +4,8 @@
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
+          <input type="text" name="keyword" class="form-control search-form" placeholder="輸入餐廳、分類"
+            aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
@@ -17,9 +17,11 @@
 
 <!-- restaurant list -->
 <div id="creation">
-  <button type="button" class="btn btn-warning create">
-    <a href="#">新增</a>
-  </button>
+  <a href='/restaurants/new'>
+    <button type="submit" class="btn btn-warning create">
+      新增
+    </button>
+  </a>
 </div>
 <div class="container mt-5">
   <div class="row">
@@ -42,12 +44,14 @@
               </span>
         </a>
         <div class="d-flex justify-content-between mt-3">
-          <form action="/">
+
+          <a href="/restaurants/{{this.id}}/edit">
             <button type="submit" class="btn btn-primary px-2 py-1">
-              <a href="#">編輯</a>
+              編輯
             </button>
-          </form>
-          <form action="/">
+          </a>
+
+          <form action="/restaurants/{{this.id}}/delete" method="POST">
             <button type="submit" class="btn btn-danger px-2 py-1">
               刪除
             </button>
