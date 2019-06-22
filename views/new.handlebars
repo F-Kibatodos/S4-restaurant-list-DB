@@ -1,5 +1,5 @@
 <div class="container my-2">
-  <form action="/restaurants" method="POST" onsubmit="alert('新增完成')">
+  <form action="/restaurants" method="POST">
     <small class="mb-3 d-block"><span class="text-danger">*</span>為必填欄位</small>
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -30,7 +30,7 @@
     <div class="form-row">
       <div class="form-group col-md-11">
         <label for="google_map">Google Map</label>
-        <input type="text" class="form-control" id="google_map" placeholder="google map 分享網址" name="google_map">
+        <input type="url" class="form-control" id="google_map" placeholder="google map 分享網址" name="google_map">
       </div>
       <div class="form-group col-md-1">
         <label for="rating"><span class="text-danger">*</span>評分</label>
