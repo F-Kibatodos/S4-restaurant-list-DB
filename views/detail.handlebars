@@ -43,7 +43,8 @@
     <a href="/restaurants/{{restaurant.id}}/edit">
       <button type="button" class="btn btn-primary">編輯</button>
     </a>
-    <form action="/restaurants/{{restaurant.id}}/delete" method="POST" onsubmit="return confirm('被看光光啦!真的要刪了?')">
+    <form action="/restaurants/{{restaurant.id}}/delete?_method=DELETE" method="POST"
+      onsubmit="return confirm('被看光光啦!真的要刪了?')">
       <button type="submit" class="btn btn-danger">刪除</button>
     </form>
   </div>

@@ -16,6 +16,16 @@
 </div>
 
 <!-- restaurant list -->
+<div class="form-group">
+  <label for="exampleFormControlSelect1">Example select</label>
+  <select class="form-control" id="exampleFormControlSelect1">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
 <div id="creation">
   <a href='/restaurants/new'>
     <button type="submit" class="btn btn-warning create">
@@ -51,7 +61,8 @@
             </button>
           </a>
 
-          <form action="/restaurants/{{this.id}}/delete" method="POST" onsubmit="return confirm('想清楚喔，要吃卻找不到了很痛苦喔')">
+          <form action="/restaurants/{{this.id}}/delete?_method=DELETE" method="POST"
+            onsubmit="return confirm('想清楚喔，要吃卻找不到了很痛苦喔')">
             <button type="submit" class="btn btn-danger px-2 py-1">
               刪除
             </button>

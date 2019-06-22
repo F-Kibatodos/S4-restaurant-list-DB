@@ -23,6 +23,11 @@ mongoose.connect('mongodb://localhost/restaurants', {
 // 將資料庫回傳的文件儲存至變數
 const db = mongoose.connection
 
+// 導入 method-override
+const methodOverride = require('method-override')
+// 設定 method-override
+app.use(methodOverride('_method'))
+
 // 與資料庫連線失敗訊息
 db.on('error', () => {
   console.log('db not connected')
@@ -104,7 +109,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 // 執行更新
-app.post('/restaurants/:id', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) console.error(err)
     restaurant.name = req.body.name
@@ -124,7 +129,7 @@ app.post('/restaurants/:id', (req, res) => {
 })
 
 //刪除餐廳
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     restaurant.remove(err => {
       if (err) console.error(err)
