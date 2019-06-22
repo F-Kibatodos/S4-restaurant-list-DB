@@ -95,6 +95,16 @@ button a:hover {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.edit-container {
+  position: relative;
+}
+
+.edit-delete {
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+}
+
 .edit-buttons {
   max-width: 600px;
   margin: 20px auto;

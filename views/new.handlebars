@@ -1,8 +1,9 @@
 <div class="container my-2">
   <form action="/restaurants" method="POST">
+    <small class="mb-3 d-block"><span class="text-danger">*</span>為必填欄位</small>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="name">名稱</label>
+        <label for="name"><span class="text-danger">*</span>名稱</label>
         <input type="text" class="form-control" id="name" placeholder="餐廳名稱" name="name" required>
       </div>
       <div class="form-group col-md-6">
@@ -10,21 +11,21 @@
         <input type="text" class="form-control" id="name_en" placeholder="餐廳英文名" name="name_en">
       </div>
       <div class="form-group col-md-6">
-        <label for="phone">電話</label>
-        <input type="text" class="form-control" id="phone" placeholder="餐廳電話" name="phone">
+        <label for="phone"><span class="text-danger">*</span>電話</label>
+        <input type="text" class="form-control" id="phone" placeholder="餐廳電話" name="phone" required>
       </div>
       <div class="form-group col-md-6">
-        <label for="category">類別</label>
-        <input type="text" class="form-control" id="category" placeholder="餐飲類別" name="category">
+        <label for="category"><span class="text-danger">*</span>類別</label>
+        <input type="text" class="form-control" id="category" placeholder="餐飲類別" name="category" required>
       </div>
     </div>
     <div class="form-group">
-      <label for="location">地址</label>
-      <input type="text" class="form-control" id="location" placeholder="餐廳地址" name="location">
+      <label for="location"><span class="text-danger">*</span>地址</label>
+      <input type="text" class="form-control" id="location" placeholder="餐廳地址" name="location" required>
     </div>
     <div class="form-group">
-      <label for="image">圖片</label>
-      <input type="text" class="form-control" id="image" placeholder="圖片" name="image">
+      <label for="image"><span class="text-danger">*</span>圖片</label>
+      <input type="text" class="form-control" id="image" placeholder="圖片" name="image" required>
     </div>
     <div class="form-row">
       <div class="form-group col-md-11">
@@ -32,17 +33,18 @@
         <input type="text" class="form-control" id="google_map" placeholder="google map 分享網址" name="google_map">
       </div>
       <div class="form-group col-md-1">
-        <label for="rating">評分</label>
-        <input type="number" class="form-control" id="rating" placeholder="1-5" name="rating" min="1" max="5"
-          step="0.1">
+        <label for="rating"><span class="text-danger">*</span>評分</label>
+        <input type="number" class="form-control" id="rating" placeholder="1-5" name="rating" min="1" max="5" step="0.1"
+          required>
       </div>
     </div>
     <div class="form-group">
-      <label for="description">描述</label>
-      <input type="text" class="form-control" id="description" placeholder="簡述餐廳特色" name="description">
+      <label for="description"><span class="text-danger">*</span>描述</label>
+      <input type="text" class="form-control" id="description" placeholder="簡述餐廳特色" name="description" required>
     </div>
-    <div>
+    <div class="d-inline-block">
       <button type="submit" class="btn btn-primary">新增</button>
     </div>
+    <a href="/"><button class="btn btn-dark" type="button">返回</button></a>
   </form>
 </div>

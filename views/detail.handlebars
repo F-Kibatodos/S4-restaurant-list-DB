@@ -39,12 +39,12 @@
     </div>
   </div>
   <div class="d-flex justify-content-between edit-buttons">
-    <button type="button" class="btn btn-dark"><a href="/">返回</a></button>
-    <button type="button" class="btn btn-primary">
-      <a href="/restaurants/{{restaurant.id}}/edit">編輯</a>
-    </button>
-    <form action="/restaurants/{{restaurant.id}}/delete">
-      <button type="button" class="btn btn-danger">刪除</button>
+    <a href="/"><button type="button" class="btn btn-dark">返回</button></a>
+    <a href="/restaurants/{{restaurant.id}}/edit">
+      <button type="button" class="btn btn-primary">編輯</button>
+    </a>
+    <form action="/restaurants/{{restaurant.id}}/delete" method="POST">
+      <button type="submit" class="btn btn-danger">刪除</button>
     </form>
   </div>
 </div>
