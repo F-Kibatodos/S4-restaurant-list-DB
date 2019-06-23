@@ -50,6 +50,7 @@ app.use('/search', require('./routes/search'))
 // 新增、編輯、刪除
 app.use('/restaurants', require('./routes/restaurant'))
 
+// 排序
 app.use('/restaurants/sort', require('./routes/sort'))
 
 // 啟動並監聽

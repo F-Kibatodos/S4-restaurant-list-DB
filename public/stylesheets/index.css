@@ -2,6 +2,12 @@ header {
   overflow: hidden;
 }
 
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
 .navbar .navbar-brand {
   color: #4592af;
 }
@@ -34,13 +40,6 @@ header {
 
 .search-bar .search-bar-inner h4 {
   color: #9b4b4b;
-}
-
-#creation {
-  float: right;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 200px;
 }
 
 button a {
