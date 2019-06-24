@@ -51,7 +51,7 @@ app.use('/search', require('./routes/search'))
 app.use('/restaurants', require('./routes/restaurant'))
 
 // 排序
-app.use('/restaurants/sort', require('./routes/sort'))
+//app.use('/restaurants/sort', require('./routes/sort'))
 
 // 啟動並監聽
 app.listen(3000)
