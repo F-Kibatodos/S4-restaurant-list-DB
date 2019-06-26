@@ -14,7 +14,7 @@ router.post(
     check
       .apply('phone')
       .custom(value => {
-        ;/^0\d{1,4}-\d{0,8}/.test(value)
+        ;/^0\d{1,4}-\d{0,8}$/.test(value)
       })
       .withMessage('wrong')
   ],
@@ -26,7 +26,7 @@ router.post(
       image: req.body.image,
       location: req.body.location,
       phone: req.body.phone,
-      google_map: req.body.google_map,
+      google_map: req.body.google_map || 'javascript:;',
       rating: req.body.rating,
       description: req.body.description
     })
