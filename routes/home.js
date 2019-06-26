@@ -14,7 +14,11 @@ router.get('/', (req, res) => {
     .sort(sortObject)
     .exec((err, restaurant) => {
       if (err) console.error(err)
-      res.render('index', { restaurant, keyword, style: 'index.css' })
+      res.render('index', {
+        restaurant: restaurant,
+        keyword: keyword,
+        style: 'index.css'
+      })
     })
 })
 

@@ -4,7 +4,7 @@ const Restaurant = require('../models/restaurant')
 const { check, validationResult } = require('express-validator')
 // 新增一間餐廳頁面
 router.get('/new', (req, res) => {
-  res.render('new')
+  res.render('new', { style: 'index.css' })
 })
 
 // 執行新增
@@ -41,7 +41,7 @@ router.post(
 router.get('/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) console.error(err)
-    res.render('detail', { restaurant })
+    res.render('detail', { restaurant: restaurant, style: 'index.css' })
   })
 })
 
