@@ -25,6 +25,8 @@ const db = mongoose.connection
 
 // 導入 method-override
 const methodOverride = require('method-override')
+const session = require('express-session')
+const passport = require('passport')
 // 設定 method-override
 app.use(methodOverride('_method'))
 
@@ -35,6 +37,25 @@ db.on('error', () => {
 // 與資料庫連線成功訊息
 db.once('open', () => {
   console.log('db connected')
+})
+
+app.use(
+  session({
+    secret: 'your secret key' // secret: 定義一組自己的私鑰（字串)
+  })
+)
+// 使用 Passport
+app.use(passport.initialize())
+app.use(passport.session())
+
+// 載入 Passport config
+require('./config/passport')(passport)
+
+// 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
+// 這是一個 middleware 所以多了一個 next 可以 pass 到下一個
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
 })
 
 const Restaurant = require('./models/restaurant')
