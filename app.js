@@ -55,6 +55,7 @@ require('./config/passport')(passport)
 // 這是一個 middleware 所以多了一個 next 可以 pass 到下一個
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
   next()
 })
 

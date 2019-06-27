@@ -23,11 +23,11 @@
           我的餐廳清單
         </a>
         <div id="creation">
-          <a href='/restaurants/new'>
-            <button type="submit" class="btn btn-warning create">
-              新增
-            </button>
-          </a>
+          {{#if isAuthenticated}}
+          <a href="/users/logout" class="btn btn-warning">Log out</a>
+          {{else}}
+          <a href="/users/login" class="btn btn-warning">Log in</a>
+          {{/if}}
         </div>
       </div>
     </nav>
