@@ -11,7 +11,7 @@ router.get('/', authenticated, (req, res) => {
   sortObject[sortField] = sortOrder
   let keyword = req.query.keyword
 
-  Restaurant.find({})
+  Restaurant.find({ userId: req.user._id })
     .sort(sortObject)
     .exec((err, restaurant) => {
       if (err) console.error(err)
