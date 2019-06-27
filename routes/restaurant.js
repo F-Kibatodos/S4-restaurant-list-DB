@@ -2,43 +2,33 @@ const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
 const { check, validationResult } = require('express-validator')
+const { authenticated } = require('../config/auth')
 // 新增一間餐廳頁面
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new', { style: 'index.css' })
 })
 
 // 執行新增
-router.post(
-  '/',
-  [
-    check
-      .apply('phone')
-      .custom(value => {
-        ;/^0\d{1,4}-\d{0,8}$/.test(value)
-      })
-      .withMessage('wrong')
-  ],
-  (req, res) => {
-    const restaurant = Restaurant({
-      name: req.body.name,
-      name_en: req.body.name_en,
-      category: req.body.category,
-      image: req.body.image,
-      location: req.body.location,
-      phone: req.body.phone,
-      google_map: req.body.google_map || 'javascript:;',
-      rating: req.body.rating,
-      description: req.body.description
-    })
-    restaurant.save(err => {
-      if (err) console.error(err)
-      res.redirect('/')
-    })
-  }
-)
+router.post('/', authenticated, (req, res) => {
+  const restaurant = Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map || 'javascript:;',
+    rating: req.body.rating,
+    description: req.body.description
+  })
+  restaurant.save(err => {
+    if (err) console.error(err)
+    res.redirect('/')
+  })
+})
 
 // 一餐廳詳細頁面
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) console.error(err)
     res.render('detail', { restaurant: restaurant, style: 'index.css' })
@@ -46,7 +36,7 @@ router.get('/:id', (req, res) => {
 })
 
 // 更新頁面
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) console.error(err)
     res.render('edit', { restaurant })
@@ -54,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // 執行更新
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) console.error(err)
     restaurant.name = req.body.name
@@ -74,7 +64,7 @@ router.put('/:id', (req, res) => {
 })
 
 //刪除餐廳
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     restaurant.remove(err => {
       if (err) console.error(err)

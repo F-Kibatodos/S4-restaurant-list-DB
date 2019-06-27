@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
+const { authenticated } = require('../config/auth')
 
 // 顯示首頁
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   const sortField = req.query.sortField || '_id'
   const sortOrder = req.query.sortOrder || 'asc'
   const sortObject = {}
