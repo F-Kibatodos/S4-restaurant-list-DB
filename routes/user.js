@@ -3,6 +3,7 @@ const router = express.Router()
 const User = require('../models/user')
 const { check, validationResult } = require('express-validator')
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 // 登入頁面
 router.get('/login', (req, res) => {
@@ -53,14 +54,20 @@ router.post(
             email,
             password
           })
-          newUser
-            .save()
-            .then(user => {
-              res.redirect('/users/login')
+          bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(password, salt, (err, hash) => {
+              if (err) throw err
+              newUser.password = hash
+              newUser
+                .save()
+                .then(user => {
+                  res.redirect('/users/login')
+                })
+                .catch(err => {
+                  console.log(err)
+                })
             })
-            .catch(err => {
-              console.log(err)
-            })
+          })
         }
       })
     }
