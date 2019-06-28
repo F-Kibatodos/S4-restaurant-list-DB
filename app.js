@@ -18,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const mongoose = require('mongoose')
 // 連接至指定資料庫
 mongoose.connect('mongodb://localhost/restaurants', {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true
 })
 // 將資料庫回傳的文件儲存至變數
 const db = mongoose.connection
@@ -41,7 +42,9 @@ db.once('open', () => {
 
 app.use(
   session({
-    secret: 'your secret key' // secret: 定義一組自己的私鑰（字串)
+    secret: 'your secret key', // secret: 定義一組自己的私鑰（字串)
+    resave: 'false',
+    saveUninitialized: 'false'
   })
 )
 // 使用 Passport
