@@ -22,8 +22,10 @@
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
           我的餐廳清單
         </a>
-        <div id="creation">
+        <div>
           {{#if isAuthenticated}}
+          <img src="{{user.image}}" alt="user image" style="width: 35px; height: 35px" class="rounded-circle mr-2">
+          <a href="/profile/{{user.id}}" class="btn btn-info mr-2">Profile</a>
           <a href="/users/logout" class="btn btn-warning">Log out</a>
           {{else}}
           <a href="/users/login" class="btn btn-warning">Log in</a>

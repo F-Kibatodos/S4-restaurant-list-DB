@@ -1,0 +1,19 @@
+<div class="row my-4 container mx-auto">
+  <div class="col-md-6 m-auto">
+    <div class="card">
+      <img class="card-img-top rounded-circle mx-auto" style="height: 250px; width: 250px; margin-top: 20px"
+        src="{{user.image}}" alt="Card image cap">
+      <div class="card-body">
+        <h2 class="card-title text-center">{{user.name}}</h2>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">手機或電話: {{user.phone}}</li>
+        <li class="list-group-item">生日: {{user.birthday}}</li>
+        <li class="list-group-item">居住地: {{user.location}}</li>
+      </ul>
+      <div class="card-body text-center">
+        <a href="/profile/{{user.id}}/edit" class="btn btn-primary">編輯</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -33,6 +33,9 @@ const db = mongoose.connection
 const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('passport')
+
+const flash = require('connect-flash')
+app.use(flash())
 // 設定 method-override
 app.use(methodOverride('_method'))
 
@@ -64,6 +67,9 @@ require('./config/passport')(passport)
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.alert_msg = req.flash('alert_msg')
   next()
 })
 
@@ -85,6 +91,8 @@ app.use('/users', require('./routes/user'))
 
 //  facebook
 app.use('/auth', require('./routes/auths'))
+
+app.use('/profile', require('./routes/profile'))
 
 // 啟動並監聽
 app.listen(3000)

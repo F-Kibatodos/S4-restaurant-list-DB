@@ -15,6 +15,20 @@ const userSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  phone: {
+    type: String
+  },
+  birthday: {
+    type: String
+  },
+  location: {
+    type: String
+  },
+  image: {
+    type: String,
+    default:
+      'https://sophosnews.files.wordpress.com/2013/08/facebook-silhouette_thumb.jpg?w=250'
   }
 })
 

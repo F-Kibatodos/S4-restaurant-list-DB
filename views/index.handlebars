@@ -27,12 +27,15 @@
     </div>
   </div>
 </div>
-<a href="/restaurants/new" class="btn btn-primary mb-3">Create</a>
+
 
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
+      <div class="d-flex justify-content-end">
+        <a href="/restaurants/new" class="btn btn-primary mb-3">新增</a>
+      </div>
       <div class="card-columns">
         {{#each restaurant}}
         <a href="/restaurants/{{this.id}}" class="text-secondary">

@@ -67,7 +67,7 @@ router.put('/:id', authenticated, (req, res) => {
       restaurant.description = req.body.description
       restaurant.save(err => {
         if (err) console.error(err)
-        res.redirect(`/restaurants/${req.params.id}`)
+        res.redirect(`/restaurants/${req.params.id}`, { style: 'index.css' })
       })
     }
   )
