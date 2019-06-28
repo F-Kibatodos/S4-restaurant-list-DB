@@ -2,6 +2,11 @@
 const express = require('express')
 const app = express()
 
+// 判別開發環境
+if (process.env.NODE_ENV !== 'production') {
+  // 如果不是 production 模式
+  require('dotenv').config() // 使用 dotenv 讀取 .env 檔案
+}
 // 載入並設定 express-handlebars 為模板引擎
 const exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -77,6 +82,9 @@ app.use('/restaurants', require('./routes/restaurant'))
 
 // 登入
 app.use('/users', require('./routes/user'))
+
+//  facebook
+app.use('/auth', require('./routes/auths'))
 
 // 啟動並監聽
 app.listen(3000)
