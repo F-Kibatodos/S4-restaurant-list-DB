@@ -29,6 +29,10 @@ router.get('/register', (req, res) => {
 router.post(
   '/register',
   [
+    check('name')
+      .exists()
+      .custom(value => /^\S+(?: \S+)*$/.test(value))
+      .withMessage('名稱格式錯誤'),
     check('password')
       .exists()
       .custom(value =>
