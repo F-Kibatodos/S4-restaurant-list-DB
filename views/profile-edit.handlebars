@@ -7,12 +7,12 @@
       {{> profile-msg}}
       <form action="/profile/{{user.id}}/edit?_method=PUT" method="POST">
         <div class="form-group">
-          <label for="name">姓名 <small>(不接受空白頭尾，字元間不超過一個空格)</small></label>
+          <label for="name">名稱 <small>(不接受空白頭尾，字元間不超過一個空格)</small></label>
           <input type="text" id="name" name="name" class="form-control" placeholder="名稱" value="{{user.name}}"
             required />
         </div>
         <div class="form-group">
-          <label for="image">大頭貼</label>
+          <label for="image">頭像</label>
           <input type="text" id="image" name="image" class="form-control" placeholder="圖片網址" value="{{user.image}}" />
         </div>
         <div class="form-group">
